@@ -80,7 +80,7 @@ public class MaxTemperature {
 
 #### 5、 打包上传并运行作业
 
-mvn package 打包
+mvn install 打包
 使用 rlzsz 将Jar包上传到服务器
 
 运行三个作业
@@ -95,8 +95,8 @@ hadoop jar ch2.noaa-1.0-SNAPSHOT.jar avg.AvgTemperature /hadoop/ch2/coaa.sample.
 
 ```
 hadoop dfs -cat /hadoop/ch2/output/coaa.sample/max/part-r-00000
-hadoop dfs -cat /hadoop/ch2/output/coaa.sample/min/part-r-00000
-hadoop dfs -cat /hadoop/ch2/output/coaa.sample/avg/part-r-00000
+hadoop dfs -cat /hadoop/ch2/output/coaa.sample/min/part-r-00000;
+hadoop dfs -cat /hadoop/ch2/output/coaa.sample/avg/part-r-00000;
 ```
 
 

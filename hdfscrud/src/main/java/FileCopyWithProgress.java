@@ -28,6 +28,6 @@ public class FileCopyWithProgress {
             }
         });
 
-        IOUtils.copyBytes(in, out, 4096, true);
+        IOUtils.copyBytes(in, out, 1024, true);
     }
 }

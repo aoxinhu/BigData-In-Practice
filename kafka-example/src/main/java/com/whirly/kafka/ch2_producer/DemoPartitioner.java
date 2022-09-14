@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @description: 自定义分区器
- * @author: 赖键锋
  * @create: 2019-04-18 02:22
  **/
 public class DemoPartitioner implements Partitioner {

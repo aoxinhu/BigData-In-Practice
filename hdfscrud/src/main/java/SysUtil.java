@@ -14,7 +14,7 @@ public class SysUtil {
     public static FileSystem getFileSystem() {
         try {
             // 设置HDFS的URL和端口号
-            String HDFSURL = "hdfs://ip:8020";
+            String HDFSURL = "hdfs://localhost:9000";
             // HDFS的配置信息
             Configuration configuration = new Configuration();
             // 设置副本数为 1

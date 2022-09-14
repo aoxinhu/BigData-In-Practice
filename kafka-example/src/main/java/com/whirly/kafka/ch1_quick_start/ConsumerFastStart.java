@@ -10,11 +10,10 @@ import java.util.Properties;
 
 /**
  * @description: kafka 消费者客户端 demo
- * @author: 赖键锋
  * @create: 2019-04-18 00:49
  **/
 public class ConsumerFastStart {
-    public static final String brokerList = "192.168.0.101:9092";
+    public static final String brokerList = "localhost:9092";
     public static final String topic = "topic.demo";
     public static final String groupId = "group.demo1";
 

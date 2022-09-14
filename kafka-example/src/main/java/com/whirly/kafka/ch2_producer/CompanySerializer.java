@@ -8,7 +8,6 @@ import java.util.Map;
 
 /**
  * @description: 自定义序列化
- * @author: 赖键锋
  * @create: 2019-04-18 12:01
  **/
 public class CompanySerializer implements Serializer<Company> {
@@ -19,7 +18,8 @@ public class CompanySerializer implements Serializer<Company> {
 
     /**
      * 自定义序列化操作
-     *
+     * 将对象序列化成二进制数组
+     * 
      * @param topic
      * @param company
      * @return

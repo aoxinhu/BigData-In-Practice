@@ -6,12 +6,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @program: hdfscrud
- * @description: 从 HDFS 上下载文件到本地
- * @author: 赖键锋
- * @create: 2018-11-26 22:29
- **/
+
 public class HdfsDownload {
     private static final FileSystem fileSystem = SysUtil.getFileSystem();
 
@@ -41,7 +36,7 @@ public class HdfsDownload {
     public static void main(String[] args) throws IOException {
         String remotePathStr = "/hadoop/upload.txt";
 
-        download(remotePathStr, "copyFile", "txt");
+        download(remotePathStr, "MycopyFile", "txt");
 
         System.out.println("下载完成！");
         fileSystem.close();

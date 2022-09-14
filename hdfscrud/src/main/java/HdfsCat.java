@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * @program: hdfscrud
  * @description: 使用字符流读取数据
- * @author: 赖键锋
- * @create: 2018-11-26 23:14
  **/
 public class HdfsCat {
 

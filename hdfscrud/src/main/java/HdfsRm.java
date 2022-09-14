@@ -5,12 +5,7 @@ import org.apache.hadoop.fs.RemoteIterator;
 
 import java.io.IOException;
 
-/**
- * @program: hdfscrud
- * @description: 删除HDFS文件
- * @author: 赖键锋
- * @create: 2018-11-26 23:42
- **/
+
 public class HdfsRm {
 
     /**

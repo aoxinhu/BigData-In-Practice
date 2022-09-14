@@ -10,11 +10,10 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * @description: 测试使用自定义的序列化器
- * @author: 赖键锋
  * @create: 2019-04-18 12:09
  **/
 public class Test {
-    public static final String brokerList = "192.168.0.101:9092";
+    public static final String brokerList = "localhost:9092";
     public static final String topic = "topic.demo";
 
     public static void main(String[] args) {
@@ -36,6 +35,7 @@ public class Test {
         properties.put("bootstrap.servers", brokerList);
 
         KafkaProducer<String, Company> producer = new KafkaProducer<>(properties);
+        
         Company company = Company.builder().name("whirly").address("China").build();
         ProducerRecord<String, Company> record = new ProducerRecord<>(topic, company);
         try {

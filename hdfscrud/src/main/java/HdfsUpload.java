@@ -6,12 +6,7 @@ import org.apache.hadoop.fs.Path;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/**
- * @program: hdfscrud
- * @description:
- * @author: 赖键锋
- * @create: 2018-11-26 20:57
- **/
+
 public class HdfsUpload {
     private static final FileSystem fileSystem = SysUtil.getFileSystem();
 
@@ -87,18 +82,18 @@ public class HdfsUpload {
         if (!isExist) {
             // 文件不存在，上传文件
             uploadToHdfs(localPathStr, remotePathStr);
-            System.out.println(String.format("文件《%s》上传成功！上传路径《%s》", localPathStr, remotePathStr));
+            System.out.println(String.format("文件《%s》上传成功!, 上传路径《%s》", localPathStr, remotePathStr));
             // 查看文件内容： hadoop dfs -cat /hadoop/upload.txt
             catHdfsFile(remotePathStr);
         } else if (override == true) {
             // 覆盖文件
-            System.out.println(String.format("文件《%s》已存在！将覆盖！", remotePathStr));
+            System.out.println(String.format("文件《%s》已存在!, 将覆盖！", remotePathStr));
             uploadToHdfs(localPathStr, remotePathStr);
             System.out.println("文件上传完成！");
             catHdfsFile(remotePathStr);
         } else {
             // 追加
-            System.out.println(String.format("文件《%s》已存在！将追加！", remotePathStr));
+            System.out.println(String.format("文件《%s》已存在!, 将追加！", remotePathStr));
             appendToFile(localPathStr, remotePathStr);
             System.out.println("文件追加完成！");
             catHdfsFile(remotePathStr);

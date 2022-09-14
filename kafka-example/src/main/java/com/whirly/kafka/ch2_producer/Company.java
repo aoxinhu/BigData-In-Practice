@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * @description: 测试序列化用的类
- * @author: 赖键锋
  * @create: 2019-04-18 11:59
  **/
 @Data

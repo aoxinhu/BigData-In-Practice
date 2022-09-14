@@ -7,12 +7,7 @@ import org.apache.hadoop.fs.Path;
 import java.io.IOException;
 import java.net.URI;
 
-/**
- * @program: hdfscrud
- * @description: HDFS创建文件
- * @author: 赖键锋
- * @create: 2018-11-26 20:36
- **/
+
 public class HdfsCreate {
     public static void main(String[] args) throws IOException {
         //获取文件系统

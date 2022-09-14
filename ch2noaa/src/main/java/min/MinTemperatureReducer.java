@@ -7,9 +7,6 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 
 /**
- * @program: ch2noaa
- * @description:
- * @author: 赖键锋
  * @create: 2018-11-26 12:42
  **/
 public class MinTemperatureReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
