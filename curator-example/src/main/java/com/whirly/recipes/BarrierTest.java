@@ -6,7 +6,6 @@ import org.apache.curator.framework.recipes.barriers.DistributedBarrier;
 /**
  * @program: curator-example
  * @description: 分布式屏障
- * @author: 赖键锋
  * @create: 2019-01-22 12:41
  **/
 public class BarrierTest {

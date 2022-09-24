@@ -4,50 +4,69 @@
 
 把各个部门的数据分发到各自的reduce task上
 
-```$xslt
-hdfs dfs -mkdir -p /hadoop/cus-partition/input
-hdfs dfs -put jidu1.txt /hadoop/cus-partition/input
-hdfs dfs -put jidu2.txt /hadoop/cus-partition/input
-hdfs dfs -put jidu3.txt /hadoop/cus-partition/input
-hdfs dfs -put jidu4.txt /hadoop/cus-partition/input
+```
+hadoop fs -rm -r -skipTrash /hadoop/cus-partition/input 
+
+hdfs dfs -mkdir -p /hadoop/cus-partition/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/customizePartition/data/input/jidu1.txt /hadoop/cus-partition/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/customizePartition/data/input/jidu2.txt /hadoop/cus-partition/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/customizePartition/data/input/jidu3.txt /hadoop/cus-partition/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/customizePartition/data/input/jidu4.txt /hadoop/cus-partition/input
 
 # 运行
+hadoop fs -rm -r -skipTrash /hadoop/cus-partition/output
+
 hadoop jar customize-Partition-1.0-SNAPSHOT.jar JiduRunner /hadoop/cus-partition/input /hadoop/cus-partition/output
+
+# 查看结果文件
+hadoop dfs -ls /hadoop/cus-partition/output
+
+hdfs dfs -cat /hadoop/cus-partition/output/part-r-00004
 ```
+
 
 #### 测试数据
 
 ```$xslt
 # cat jidu1.txt 
-研发部门        100
-测试部门        90
-硬件部门        92
-销售部门        200
+DevlopDepartment        100
+TestDepartment        90
+HardwareDepartment        92
+SaleDepartment        200
 
 # cat jidu2.txt 
-研发部门        200
-测试部门        93
-硬件部门        95
-销售部门        230
+DevlopDepartment        200
+TestDepartment        93
+HardwareDepartment        95
+SaleDepartment        230
 
 # cat jidu3.txt 
-研发部门        202
-测试部门        92
-硬件部门        94
-销售部门        231
+DevlopDepartment        202
+TestDepartment        92
+HardwareDepartment        94
+SaleDepartment        231
 
 # cat jidu4.txt 
-研发部门        209
-测试部门        98
-硬件部门        99
-销售部门        251
+DevlopDepartment        209
+TestDepartment        98
+HardwareDepartment        99
+SaleDepartment        251
 ```
 
 #### 结果汇总
 
 ```$xslt
-研发部门	711
-测试部门	373
-硬件部门	380
-销售部门	912
+DevlopDepartment	711
+TestDepartment	373
+HardwareDepartment	380
+SaleDepartment	912
+```
+
+#### Hadoop 安全模式
+```
+hdfs dfsadmin -safemode get //查看状态
+hdfs dfsadmin -safemode enter //进入安全模式
+hdfs dfsadmin -safemode get //查看状态
+hdfs dfsadmin -safemode leave //退出安全模式
+hdfs dfsadmin -safemode get //查看安全模式
 ```

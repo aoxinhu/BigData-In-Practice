@@ -10,12 +10,10 @@ import org.apache.zookeeper.CreateMode;
 
 /**
  * @program: curator-example
- * @description:
- * @author: 赖键锋
  * @create: 2019-01-21 11:47
  **/
 public class CuratorWatcher {
-    private static final String zkServerIps = "master:2181,hadoop2:2181";
+    private static final String zkServerIps = "localhost:2181,localhost:2182";
 
     public static void main(String[] args) throws Exception {
         final String nodePath = "/testZK";
@@ -39,6 +37,7 @@ public class CuratorWatcher {
                 Thread.sleep(1000);
             }
             Thread.sleep(10000); // 等待100秒，手动在 zkCli 客户端操作节点，触发事件
+            cacheNode.close();
         } finally {
             client.delete().deletingChildrenIfNeeded().forPath(nodePath);
             client.close();

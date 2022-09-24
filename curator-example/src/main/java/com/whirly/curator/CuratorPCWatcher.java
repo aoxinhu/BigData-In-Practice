@@ -13,12 +13,10 @@ import java.util.List;
 
 /**
  * @program: curator-example
- * @description:
- * @author: 赖键锋
  * @create: 2019-01-21 21:01
  **/
 public class CuratorPCWatcher {
-    private static final String zkServerIps = "master:2181,hadoop2:2181";
+    private static final String zkServerIps = "localhost:2181,localhost:2182";
 
     public static void main(String[] args) throws Exception {
         final String nodePath = "/testZK";
@@ -42,7 +40,11 @@ public class CuratorPCWatcher {
             List<ChildData> childDataList = childrenCache.getCurrentData();
             System.out.println("当前节点的子节点详细数据列表：");
             for (ChildData childData : childDataList) {
-                System.out.println("\t* 子节点路径：" + new String(childData.getPath()) + "，该节点的数据为：" + new String(childData.getData()));
+                try{
+                    System.out.println("\t* 子节点路径：" + new String(childData.getPath()) + "，该节点的数据为：" + new String(childData.getData()));
+                } catch (Exception e){
+                    System.out.println("该子节点没有数据");
+                }
             }
 
             // 添加事件监听器
@@ -54,7 +56,12 @@ public class CuratorPCWatcher {
                         System.out.println("子节点初始化成功");
                     } else if (event.getType().equals(PathChildrenCacheEvent.Type.CHILD_ADDED)) {  // 添加子节点时触发
                         System.out.print("子节点：" + event.getData().getPath() + " 添加成功，");
-                        System.out.println("该子节点的数据为：" + new String(event.getData().getData()));
+                        try{
+                            System.out.println("该子节点的数据为：" + new String(event.getData().getData()));
+                        } catch (Exception e){
+                            System.out.println("该子节点没有数据");
+                        }
+                        
                     } else if (event.getType().equals(PathChildrenCacheEvent.Type.CHILD_REMOVED)) {  // 删除子节点时触发
                         System.out.println("子节点：" + event.getData().getPath() + " 删除成功");
                     } else if (event.getType().equals(PathChildrenCacheEvent.Type.CHILD_UPDATED)) {  // 修改子节点数据时触发
@@ -64,8 +71,11 @@ public class CuratorPCWatcher {
                 }
             });
             Thread.sleep(100000); // sleep 100秒，在 zkCli.sh 操作子节点，注意查看控制台的输出
+
+            childrenCache.close();
         } finally {
             client.close();
+            
         }
     }
 }

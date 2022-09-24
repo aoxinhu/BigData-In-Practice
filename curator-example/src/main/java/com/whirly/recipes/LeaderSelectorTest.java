@@ -17,7 +17,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @program: curator-example
  * @description:
- * @author: 赖键锋
  * @create: 2019-01-22 00:30
  **/
 public class LeaderSelectorTest {
@@ -42,7 +41,7 @@ public class LeaderSelectorTest {
                         final LeaderSelector selector = new LeaderSelector(client, masterPath, new LeaderSelectorListener() {
                             @Override
                             public void takeLeadership(CuratorFramework client) throws Exception {
-                                System.out.println(name + ": 我现在被选举为Leader！我开始工作了....");
+                                System.out.println(name + ": 我现在被选举为Leader! 我开始工作了....");
                                 Thread.sleep(3000);
                             }
                             @Override

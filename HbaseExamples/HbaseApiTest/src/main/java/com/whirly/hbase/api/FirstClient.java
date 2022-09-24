@@ -11,7 +11,6 @@ import java.io.IOException;
  * @program: hbaseintro
  * @description: HBase Java API 增删查改
  * 参考 https://blog.csdn.net/sinat_39409672/article/details/78403015
- * @author: 赖键锋
  * @create: 2018-11-29 21:40
  **/
 public class FirstClient {
@@ -25,13 +24,13 @@ public class FirstClient {
      */
     public static void init() throws IOException {
         configuration = HBaseConfiguration.create();
-        configuration.set("hbase.zookeeper.quorum", "master:2181");
-        // configuration.addResource("hbase-site.xml");
+        configuration.set("hbase.zookeeper.quorum", "localhost:2181");
+        // configuration.addResource("D:/DevLibrary/hbase/hbase-2.3.7/conf/hbase-site.xml");
         connection = ConnectionFactory.createConnection(configuration);
     }
 
     /**
-     * Java API 创建表
+     * ========================== Java API 创建表 =============================
      */
     public static void createTable(String tableName, String... cfs) throws IOException {
         Admin admin = connection.getAdmin();
@@ -39,7 +38,9 @@ public class FirstClient {
         TableName tbName = TableName.valueOf(tableName);
 
         // 判断表是否已经存在，不存在则创建表
-        if (admin.tableExists(tbName)) {
+        boolean flag = admin.tableExists(tbName);
+    
+        if (flag) {
             System.err.println(String.format("表 %s 已经存在！", tableName));
             return;
         }
@@ -57,7 +58,7 @@ public class FirstClient {
     }
 
     /**
-     * Java API 删除表
+     * ========================== Java API 删除表 ===============================
      */
     public static void deleteTable(String tableName) throws IOException {
         Admin admin = connection.getAdmin();
@@ -76,7 +77,7 @@ public class FirstClient {
     }
 
     /**
-     * Java API 向表写入数据
+     * ========================= Java API 向表写入数据 ==================================
      */
     public static void putData(String tableName, String rowkey, String family, String qualifier, String value) throws IOException {
         TableName tbName = TableName.valueOf(tableName);
@@ -92,7 +93,7 @@ public class FirstClient {
     }
 
     /**
-     * Java API 查询数据
+     * ========================== Java API 查询数据 ==================================
      */
     public static void getData(String tableName, String rowkey) throws IOException {
         TableName tbName = TableName.valueOf(tableName);
@@ -122,7 +123,7 @@ public class FirstClient {
     }
 
     /**
-     * Java API 删除某条数据
+     * =============================== Java API 删除某条数据 =======================================
      */
     public static void deleteData(String tableName, String rowkey, String family, String qualifier) throws IOException {
         TableName tbName = TableName.valueOf(tableName);
@@ -138,7 +139,7 @@ public class FirstClient {
     }
 
     /**
-     * 删除一行数据
+     * ======================================== 删除一行数据 =========================================
      */
     public static void deleteRow(String tableName, String rowkey) throws IOException {
         TableName tbName = TableName.valueOf(tableName);
@@ -176,6 +177,7 @@ public class FirstClient {
             System.out.println("\n-------删除数据 001 info age--------\n");
             // 删除数据
             deleteData(tableName, "001", "info", "age");
+
             // 再次查看
             System.out.println("\n-------再次查看001--------\n");
             getData(tableName, "001");
@@ -184,6 +186,7 @@ public class FirstClient {
             // 删除行
             deleteRow(tableName, "001");
             getData(tableName, "001");
+
             System.out.println("\n-------查看数据002--------\n");
             getData(tableName, "002");
 

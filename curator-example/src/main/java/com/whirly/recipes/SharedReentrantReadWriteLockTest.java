@@ -12,7 +12,6 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @program: curator-example
  * @description: 分布式读写锁 - 可以看到通过获得read锁生成的订单中是有重复的，而获取的写锁中是没有重复数据的。符合读写锁的特点
- * @author: 赖键锋
  * @create: 2019-01-22 01:13
  **/
 public class SharedReentrantReadWriteLockTest {

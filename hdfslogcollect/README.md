@@ -11,7 +11,7 @@
 
 
 
-```jva
+```java
 // 遍历待上传临时目录中的每一个文件
 for (File file : toUploadFiles) {
 	// 生成目标文件名

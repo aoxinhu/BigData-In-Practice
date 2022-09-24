@@ -6,7 +6,6 @@ import java.util.Properties;
 /**
  * @program: hdfslogcollect
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-01 11:20
  **/
 public class PropsHolder {
@@ -20,7 +19,7 @@ public class PropsHolder {
             synchronized (PropsHolder.class) {
                 if (properties == null) {
                     properties = new Properties();
-                    properties.load(PropsHolder.class.getClassLoader().getResourceAsStream("datacollect.properties"));
+                    properties.load(PropsHolder.class.getClassLoader().getResourceAsStream("datacollector.properties"));
                 }
             }
         }

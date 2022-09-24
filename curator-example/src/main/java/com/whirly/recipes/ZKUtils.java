@@ -7,11 +7,10 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 /**
  * @program: curator-example
  * @description:
- * @author: 赖键锋
  * @create: 2019-01-22 12:24
  **/
 public class ZKUtils {
-    private static final String zkServerIps = "master:2181,hadoop2:2181";
+    private static final String zkServerIps = "localhost:2181,localhost:2182";
 
     public static synchronized CuratorFramework getClient() {
         CuratorFramework client = CuratorFrameworkFactory.builder().connectString(zkServerIps)

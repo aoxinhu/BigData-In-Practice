@@ -10,7 +10,6 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @program: curator-example
  * @description: 分布式计数器，典型应用场景：统计在线人数
- * @author: 赖键锋
  * @create: 2019-01-22 12:23
  **/
 public class DistAtomicIntTest {

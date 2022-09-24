@@ -3,7 +3,6 @@ package config;
 /**
  * @program: hdfslogcollect
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-01 11:19
  **/
 public class GlobalConstants {

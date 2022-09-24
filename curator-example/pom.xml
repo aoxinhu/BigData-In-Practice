@@ -23,6 +23,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <!-- ======================================= -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
@@ -49,6 +50,7 @@
             <artifactId>curator-x-discovery</artifactId>
             <version>2.12.0</version>
         </dependency>
+        <!-- ======================================= -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>

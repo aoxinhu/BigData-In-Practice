@@ -32,16 +32,23 @@ tengxun,2200
 
 #### 运行
 
-```$xslt
-hadoop jar hadoop-join-1.0-SNAPSHOT.jar LeftJoin \
-    -Dinput_dir=/hadoop/join/input \
-    -Doutput_dir=/hadoop/join/output \
-    -Dmapred.textoutputformat.separator=","
 ```
+hadoop fs -rm -r -skipTrash /hadoop/join/input
+# 上传输入的数据
+hdfs dfs -mkdir -p /hadoop/join/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/hadoopjoin/data/employee.txt /hadoop/join/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/hadoopjoin/data/salary.txt /hadoop/join/input;
 
+# 命令
+hadoop jar hadoop-join-1.0-SNAPSHOT.jar LeftJoin -Dinput_dir=/hadoop/join/input -Doutput_dir=/hadoop/join/output -Dmapred.textoutputformat.separator=","
+```
 #### 输出
 
 ```$xslt
+# 查看
+hadoop dfs -ls /hadoop/join/output;
+hdfs dfs -cat /hadoop/join/output/part-r-00004
+# 数据
 jd,mike,1600
 jd,david,1600
 tb,lucifer,1800
@@ -78,10 +85,13 @@ tbb.txt
 #### 运行
 
 ```
-hdfs dfs -mkdir -p /hadoop/mapjoin/input
-hdfs dfs -mkdir -p /hadoop/mapjoin/cache
-hdfs dfs -mkdir -p /hadoop/mapjoin/input
-hdfs dfs -put tbb.txt /hadoop/mapjoin/cache
+hadoop fs -rm -r -skipTrash /hadoop/mapjoin/input
+
+hdfs dfs -mkdir -p /hadoop/mapjoin/input;
+hdfs dfs -mkdir -p /hadoop/mapjoin/cache;
+hdfs dfs -mkdir -p /hadoop/mapjoin/input;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/hadoopjoin/data/tbb.txt /hadoop/mapjoin/cache;
+hdfs dfs -put C:/PROJECTS/BigData-In-Practice/hadoopjoin/data/tba.txt /hadoop/mapjoin/input;
 
 # 运行作业
 hadoop jar hadoop-join-1.0-SNAPSHOT.jar MapJoin /hadoop/mapjoin/input /hadoop/mapjoin/cache/tbb.txt /hadoop/mapjoin/output
@@ -90,6 +100,9 @@ hadoop jar hadoop-join-1.0-SNAPSHOT.jar MapJoin /hadoop/mapjoin/input /hadoop/ma
 #### 运行结果
 
 ```$xslt
+hadoop dfs -ls /hadoop/mapjoin/output;
+hdfs dfs -cat /hadoop/mapjoin/output/part-m-00000
+
 Emp_Dep{name='zhang', sex='male', age=20, depNo=1, depName='sales'}
 Emp_Dep{name='li', sex='female', age=25, depNo=2, depName='Dev'}
 Emp_Dep{name='wang', sex='female', age=30, depNo=3, depName='Mgt'}

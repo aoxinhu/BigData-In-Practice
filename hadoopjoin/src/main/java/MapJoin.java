@@ -23,7 +23,6 @@ import java.util.Map;
 /**
  * @program: hadoop-join
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-02 01:55
  **/
 public class MapJoin {

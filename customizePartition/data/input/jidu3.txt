@@ -1,4 +1,4 @@
-研发部门	202
-测试部门	92
-硬件部门	94
-销售部门	231
+DevlopDepartment	202
+TestDepartment	92
+HardwareDepartment	94
+SaleDepartment	231

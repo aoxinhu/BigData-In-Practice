@@ -7,7 +7,6 @@ import java.io.IOException;
 /**
  * @program: hadoop-join
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-02 01:58
  **/
 public class Emp_Dep implements Writable {

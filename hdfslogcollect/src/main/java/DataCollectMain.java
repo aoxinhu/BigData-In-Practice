@@ -6,11 +6,11 @@ import java.util.Timer;
 /**
  * @program: hdfslogcollect
  * @description: 定时任务调度器，分别启动两个任务：日志采集任务、备份日志清理任务
- * @author: 赖键锋
  * @create: 2018-12-01 11:26
  **/
 public class DataCollectMain {
     public static void main(String[] args) {
+        
         // 启动数据采集任务 定时调度
         // 使用ScheduledExecutorService代替Timer吧
         // 多线程并行处理定时任务时，Timer运行多个TimeTask时，只要其中之一没有捕获抛出的异常，

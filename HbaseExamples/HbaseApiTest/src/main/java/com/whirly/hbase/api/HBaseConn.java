@@ -12,7 +12,6 @@ import java.io.IOException;
 /**
  * @program: HbaseExamples
  * @description:
- * @author: 赖键锋
  * @create: 2019-02-16 13:14
  **/
 public class HBaseConn {

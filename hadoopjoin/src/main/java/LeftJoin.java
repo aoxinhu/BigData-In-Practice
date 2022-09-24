@@ -21,7 +21,6 @@ import java.util.Vector;
 /**
  * @program: hadoopjoin
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-02 00:56
  **/
 public class LeftJoin extends Configured implements Tool {

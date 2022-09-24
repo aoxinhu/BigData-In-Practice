@@ -23,7 +23,6 @@ import java.util.List;
  * @program: HbaseExamples
  * @description: hbase Endpoint
  * https://blog.csdn.net/carl810224/article/details/52224441
- * @author: 赖键锋
  * @create: 2019-02-17 15:37
  **/
 public class TestRowCountEndPoint extends

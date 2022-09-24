@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * @program: curator-example
  * @description: 双栅栏
- * @author: 赖键锋
  * @create: 2019-01-28 11:43
  **/
 public class DoubleDistributedBarrierTest {

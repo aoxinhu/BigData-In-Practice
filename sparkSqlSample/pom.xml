@@ -7,10 +7,12 @@
     <inceptionYear>2008</inceptionYear>
     <properties>
         <encoding>UTF-8</encoding>
-        <scala.version>2.11.12</scala.version>
-        <spark.version>2.3.1</spark.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <scala.version>2.13.2</scala.version>
+        <spark.version>2.4.7</spark.version>
     </properties>
-
+ 
     <dependencies>
         <!--scala-->
         <dependency>
@@ -18,7 +20,7 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
-
+ 
         <!--Spark SQL-->
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -26,7 +28,7 @@
             <version>${spark.version}</version>
         </dependency>
 
-        <dependency>
+        <dependency> 
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-hive_2.11</artifactId>
             <version>${spark.version}</version>
@@ -35,7 +37,7 @@
             <groupId>org.spark-project.hive</groupId>
             <artifactId>hive-jdbc</artifactId>
             <version>1.2.1.spark2</version>
-        </dependency>
+        </dependency> 
 
     </dependencies>
 

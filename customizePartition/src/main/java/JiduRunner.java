@@ -15,7 +15,6 @@ import java.io.IOException;
 /**
  * @program: customizePartition
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-02 16:58
  **/
 public class JiduRunner {

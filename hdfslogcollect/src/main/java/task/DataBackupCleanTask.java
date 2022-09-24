@@ -16,7 +16,6 @@ import java.util.TimerTask;
  * 遍历日志备份目录，获取其中的子文件夹；
  * 通过各子文件夹的名字转换成备份文件夹的日期；
  * 判断备份文件夹的备份时间距当前时间的时间差是否超出备份最长时限，如果超过最大允许时限，则删除该备份子目录；
- * @author: 赖键锋
  * @create: 2018-12-01 18:08
  **/
 public class DataBackupCleanTask extends TimerTask {

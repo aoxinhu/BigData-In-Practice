@@ -45,6 +45,7 @@ public class Test {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        producer.close();
     }
 
     public static void testSelfPartition() {
@@ -64,6 +65,7 @@ public class Test {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        producer.close();
     }
 
     public static void testSelfProducerInterceptor() {
@@ -83,5 +85,6 @@ public class Test {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        producer.close();
     }
 }

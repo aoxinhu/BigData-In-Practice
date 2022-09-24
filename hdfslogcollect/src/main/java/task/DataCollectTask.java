@@ -19,7 +19,6 @@ import java.util.UUID;
 /**
  * @program: hdfslogcollect
  * @description: 日志采集任务线程类
- * @author: 赖键锋
  * @create: 2018-12-01 11:37
  **/
 public class DataCollectTask extends TimerTask {
@@ -48,7 +47,7 @@ public class DataCollectTask extends TimerTask {
                 FileUtils.moveFileToDirectory(file, toUploadDir, true);
             }
 
-            // 构造一个hdfs客户端
+            // ================构造一个hdfs客户端================
             Configuration conf = new Configuration();
             conf.set("fs.defaultFS", properties.getProperty(GlobalConstants.HDFS_URI));
             FileSystem fs = FileSystem.get(new URI(properties.getProperty(GlobalConstants.HDFS_URI)), conf, "root");
@@ -69,7 +68,7 @@ public class DataCollectTask extends TimerTask {
                 // 拼接hdfs上的完整的目标存储路径
                 Path destPath = new Path(properties.getProperty(GlobalConstants.LOG_HDFS_BASE_PATH) + dayString + "/" + dstName);
 
-                // 上传该文件
+                // ================上传该文件================
                 System.out.println("准备上传：" + file.getPath());
                 fs.copyFromLocalFile(new Path(file.getPath()), destPath);
                 System.out.println("上传完毕");
@@ -78,7 +77,7 @@ public class DataCollectTask extends TimerTask {
                 File backupDir = new File(properties.getProperty(GlobalConstants.LOG_BAK_BASE_PATH) + dayHourString);
                 System.out.println("即将备份到：" + backupDir.getPath());
 
-                // 移动到备份目录
+                // ================移动到备份目录================
                 FileUtils.moveFileToDirectory(file, backupDir, true);
                 System.out.println("备份完毕：" + backupDir.getPath());
 

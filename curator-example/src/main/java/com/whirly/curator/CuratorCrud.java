@@ -11,13 +11,11 @@ import org.apache.zookeeper.data.Stat;
 
 /**
  * @program: curator-example
- * @description:
- * @author: 赖键锋
  * @create: 2019-01-21 10:06
  **/
 public class CuratorCrud {
     // 集群模式则是多个ip
-    private static final String zkServerIps = "master:2181,hadoop2:2181";
+    private static final String zkServerIps = "localhost:2181,localhost:2182";
 
     public static void main(String[] args) throws Exception {
         // 创建节点
@@ -25,6 +23,7 @@ public class CuratorCrud {
         byte[] data = "this is a test data".getBytes(); // 节点数据
         byte[] newData = "new test data".getBytes(); // 节点数据
 
+        // ============================== 设置重连策略 ===============================
         // 设置重连策略ExponentialBackoffRetry, baseSleepTimeMs：初始sleep的时间,maxRetries：最大重试次数,maxSleepMs：最大重试时间
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(10000, 5);
         //（推荐）curator链接zookeeper的策略:RetryNTimes n：重试的次数 sleepMsBetweenRetries：每次重试间隔的时间
@@ -36,7 +35,7 @@ public class CuratorCrud {
         // curator链接zookeeper的策略:RetryUntilElapsed maxElapsedTimeMs:最大重试时间 sleepMsBetweenRetries:每次重试间隔 重试时间超过maxElapsedTimeMs后，就不再重试
         // RetryPolicy retryPolicy4 = new RetryUntilElapsed(2000, 3000);
 
-        // Curator客户端
+        // ==========================Curator客户端========================
         CuratorFramework client = null;
         // 实例化Curator客户端，Curator的编程风格可以让我们使用方法链的形式完成客户端的实例化
         client = CuratorFrameworkFactory.builder()  // 使用工厂类来建造客户端的实例对象
@@ -47,6 +46,7 @@ public class CuratorCrud {
         // 启动Curator客户端
         client.start();
 
+
         boolean isZkCuratorStarted = client.getState().equals(CuratorFrameworkState.STARTED);
         System.out.println("当前客户端的状态：" + (isZkCuratorStarted ? "连接中..." : "已关闭..."));
         try {
@@ -54,7 +54,7 @@ public class CuratorCrud {
             Stat s = client.checkExists().forPath(nodePath);
             if (s == null) {
                 System.out.println("节点不存在，创建节点");
-                // 创建节点
+                // =============================创建节点============================
                 String result = client.create()
                         .creatingParentsIfNeeded()    // 创建父节点，也就是会递归创建
                         .withMode(CreateMode.PERSISTENT) // 节点类型，PERSISTENT是持久节点
@@ -66,14 +66,14 @@ public class CuratorCrud {
             }
             getData(client, nodePath);  // 输出节点信息
 
-            // 更新指定节点的数据
+            // ===================更新指定节点的数据===================
             int version = s == null ? 0 : s.getVersion();  // 版本不一致时的异常：KeeperErrorCode = BadVersion
             Stat resultStat = client.setData().withVersion(version)   // 指定数据版本
                     .forPath(nodePath, newData);    // 需要修改的节点路径以及新数据
             System.out.println("更新节点数据成功");
             getData(client, nodePath);  // 输出节点信息
 
-            // 删除节点
+            // ====================删除节点=====================
             client.delete().guaranteed()    // 如果删除失败，那么在后端还是会继续删除，直到成功
                     .deletingChildrenIfNeeded() // 子节点也一并删除，也就是会递归删除
                     .withVersion(resultStat.getVersion())
@@ -81,7 +81,7 @@ public class CuratorCrud {
             System.out.println("删除节点：" + nodePath);
             Thread.sleep(1000);
         } finally {
-            // 关闭客户端
+            // =====================关闭客户端=================
             if (!client.getState().equals(CuratorFrameworkState.STOPPED)) {
                 System.out.println("关闭客户端.....");
                 client.close();

@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @program: curator-example
  * @description:
- * @author: 赖键锋
  * @create: 2019-01-21 23:29
  **/
 public class LeaderLatchTest {
