@@ -9,8 +9,6 @@
 
 上传的关键代码 copyFromLocalFile
 
-
-
 ```java
 // 遍历待上传临时目录中的每一个文件
 for (File file : toUploadFiles) {
@@ -35,3 +33,5 @@ for (File file : toUploadFiles) {
 }
 ```
 
+### 关键配置文件
+datacollector.properties

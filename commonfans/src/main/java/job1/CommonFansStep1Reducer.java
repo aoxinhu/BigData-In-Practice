@@ -10,7 +10,6 @@ import java.util.Collections;
 /**
  * @program: commonfans
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-01 21:03
  **/
 public class CommonFansStep1Reducer extends Reducer<Text, Text, Text, Text> {

@@ -8,7 +8,6 @@ import java.io.IOException;
 /**
  * @program: commonfans
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-01 21:28
  **/
 public class CommonFansStep2Reducer extends Reducer<Text, Text, Text, Text> {

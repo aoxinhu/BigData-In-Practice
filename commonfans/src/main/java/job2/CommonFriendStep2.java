@@ -13,7 +13,6 @@ import java.io.IOException;
 /**
  * @program: commonfans
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-01 21:31
  **/
 public class CommonFriendStep2 {

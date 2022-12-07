@@ -9,7 +9,6 @@ import java.io.IOException;
 /**
  * @program: commonfans
  * @description:
- * @author: 赖键锋
  * @create: 2018-12-01 21:27
  **/
 public class CommonFansStep2Mapper extends Mapper<LongWritable, Text, Text, Text> {
