@@ -41,7 +41,4 @@ HiveContext 因为元数据存在MySQL中，所以启动时需要把MySQL驱动�
 
 
 
-
-
-
 spark-shell  spark-sql hive 操作

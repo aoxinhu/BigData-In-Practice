@@ -5,6 +5,6 @@ object Hello {
 
   def main(args: Array[String]): Unit = {
 
-    print("Hello");
+    print("Hello, Tom");
   }
 }

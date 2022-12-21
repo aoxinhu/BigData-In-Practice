@@ -28,11 +28,11 @@
 
         <!--解析IP地址-->
 
-        <dependency>
+        <!-- <dependency> 
             <groupId>com.ggstar</groupId>
             <artifactId>ipdatabase</artifactId>
             <version>1.0</version>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>org.apache.poi</groupId>

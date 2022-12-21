@@ -57,7 +57,7 @@ object DataFrameRDDApp {
     */
   def inferReflection(spark: SparkSession) {
     // RDD ==> DataFrame
-    val rdd = spark.sparkContext.textFile("file:///E:/bigdata-workstation/sparkSqlSample/data/infos.txt")
+    val rdd = spark.sparkContext.textFile("file:///C:/PROJECTS/BigData-In-Practice/sparkSqlSample/data/infos.txt")
 
     //注意：需要导入隐式转换
     import spark.implicits._
@@ -79,7 +79,7 @@ object DataFrameRDDApp {
     */
   def program(spark: SparkSession): Unit = {
     // RDD ==> DataFrame
-    val rdd = spark.sparkContext.textFile("file:///E:/bigdata-workstation/sparkSqlSample/data/infos.txt")
+    val rdd = spark.sparkContext.textFile("file:///C:/PROJECTS/BigData-In-Practice/sparkSqlSample/data/infos.txt")
     // 注意这里是 Row，且没有 toDF()
     val infoRDD = rdd.map(_.split("\t")).map(item => Row(item(0).toInt, item(1), item(2).toInt))
 
