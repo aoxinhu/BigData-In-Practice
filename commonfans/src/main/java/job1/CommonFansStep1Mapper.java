@@ -22,7 +22,9 @@ public class CommonFansStep1Mapper extends Mapper<LongWritable, Text, Text, Text
         // 得到粉丝
         String[] fans = splits[1].split(",");
 
-        // 将粉丝作为 key，用户作为value，得到 单个粉丝：粉丝关注的一个用户
+        // === 将粉丝作为 key，用户作为value，得到  == 单个粉丝：粉丝关注的一个用户 ==
+        // === 输出的一系列的 key-value , key是可能重复的 =====
+        // === 后面会把 key 去重, 把同一个key的value合在一起 ======
         for (String fan : fans) {
             context.write(new Text(fan), new Text(user));
         }

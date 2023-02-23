@@ -13,7 +13,7 @@ import java.util.Collections;
  * @create: 2018-12-01 21:03
  **/
 public class CommonFansStep1Reducer extends Reducer<Text, Text, Text, Text> {
-    // fan:某个"粉丝"
+    // fan: 某个"粉丝"
     // users: fan关注的一组用户字符串： user1,user2,user3
     @Override
     protected void reduce(Text fan, Iterable<Text> users, Context context) throws IOException, InterruptedException {
@@ -28,9 +28,9 @@ public class CommonFansStep1Reducer extends Reducer<Text, Text, Text, Text> {
         Collections.sort(userList);
 
         // 把这一对user进行两两组合，并将:
-        //1.组合作为key
-        //2.共同的粉丝fan作为value
-        //返回给reduce task作为本job的最终结果
+        // 1.组合作为key
+        // 2.共同的粉丝fan作为value
+        // 返回给reduce task作为本job的最终结果
         for (int i = 0; i < userList.size(); i++) {
             // 前面排过序，这里 j 从 i + 1 开始，所以不会出现 有 A-F 又有 F-A 的现象
             for (int j = i + 1; j < userList.size(); j++) {
