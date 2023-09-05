@@ -5,27 +5,27 @@
 
 ### 运行步骤
 
-```
-# 在 HDFS 中创建存放输入文件夹
+
+> 在 HDFS 中创建存放输入文件夹
 hdfs dfs -mkdir -p /hadoop/commonfans/input
-# 将数据文件上传到 HDFS 输入文件夹中
+> 将数据文件上传到 HDFS 输入文件夹中
 hdfs dfs -copyFromLocal fans.txt /hadoop/commonfans/input
 
-# 步骤一的结果存放在 /hadoop/commonfans/tmp
+> 步骤一的结果存放在 /hadoop/commonfans/tmp
 
-# 运行步骤一
+> 运行步骤一
 hadoop jar common-fans-1.0-SNAPSHOT.jar job1.CommonFriendStep1 /hadoop/commonfans/input/fans.txt /hadoop/commonfans/tmp
-# 查看步骤一运行结果
+> 查看步骤一运行结果
 hdfs dfs -ls /hadoop/commonfans/tmp
 hdfs dfs -cat /hadoop/commonfans/tmp/part-r-00000
 
-# 运行步骤二
+> 运行步骤二
 hadoop jar common-fans-1.0-SNAPSHOT.jar job2.CommonFriendStep2 /hadoop/commonfans/tmp/part-r-00000 /hadoop/commonfans/output
 
-# 查看步骤二结果
+> 查看步骤二结果
 hdfs dfs -ls /hadoop/commonfans/output
 hdfs dfs -cat /hadoop/commonfans/output/part-r-00000
-```
+
 
 ### 需求描述
 

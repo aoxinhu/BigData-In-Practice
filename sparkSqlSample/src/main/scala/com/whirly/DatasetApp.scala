@@ -16,7 +16,7 @@ object DatasetApp {
     //注意：需要导入隐式转换
     import spark.implicits._
 
-    val path = "file:///E:/bigdata-workstation/sparkSqlSample/data/people.csv"
+    val path = args(0)
     // spark 如何解析csv文件？
     val df = spark.read.option("header","true").option("inferSchema","true").csv(path)
     df.show

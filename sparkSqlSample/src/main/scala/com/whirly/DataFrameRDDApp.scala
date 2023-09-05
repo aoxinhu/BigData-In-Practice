@@ -57,10 +57,11 @@ object DataFrameRDDApp {
     */
   def inferReflection(spark: SparkSession) {
     // RDD ==> DataFrame
-    val rdd = spark.sparkContext.textFile("file:///C:/PROJECTS/BigData-In-Practice/sparkSqlSample/data/infos.txt")
+    val rdd = spark.sparkContext.textFile("file:///G:/dev/data/spark-sql-sample/infos.txt")
 
     //注意：需要导入隐式转换
     import spark.implicits._
+
     // RDD 通过 toRDD 转换为 DataFrame
     val infoDF = rdd.map(_.split("\t")).map(item => Info(item(0).toInt, item(1), item(2).toInt)).toDF()
 
@@ -70,6 +71,7 @@ object DataFrameRDDApp {
     infoDF.filter(infoDF.col("age") > 19).show
 
     infoDF.createOrReplaceTempView("infos")
+
     // spark sql 从 infos 中查数据
     spark.sql("select * from infos where age > 18").show()
   }
@@ -79,8 +81,9 @@ object DataFrameRDDApp {
     */
   def program(spark: SparkSession): Unit = {
     // RDD ==> DataFrame
-    val rdd = spark.sparkContext.textFile("file:///C:/PROJECTS/BigData-In-Practice/sparkSqlSample/data/infos.txt")
-    // 注意这里是 Row，且没有 toDF()
+    val rdd = spark.sparkContext.textFile("file:///G:/dev/data/spark-sql-sample/infos.txt")
+
+    // 注意这里是 Row，且与inferReflection对比没有 toDF()
     val infoRDD = rdd.map(_.split("\t")).map(item => Row(item(0).toInt, item(1), item(2).toInt))
 
     // 定义一个 Schema

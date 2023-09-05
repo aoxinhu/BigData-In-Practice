@@ -16,7 +16,8 @@ object SparkSessionApp {
       .master("local")
       .getOrCreate();
 
-    val people = spark.read.json("file:///C:/PROJECTS/BigData-In-Practice/sparkSqlSample/data/people.json")
+    val people = spark.read.json("file:///G:/dev/data/spark-sql-sample/people.json")
     people.show()
+    
   }
 }

@@ -9,9 +9,10 @@
         <encoding>UTF-8</encoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.version>2.13.2</scala.version>
+        <!-- <scala.version>2.13.11</scala.version>  -->
+        <scala.version>2.12.10</scala.version> 
         <spark.version>2.4.7</spark.version>
-    </properties>
+    </properties> 
  
     <dependencies>
         <!--scala-->
@@ -33,7 +34,7 @@
             <artifactId>spark-hive_2.11</artifactId>
             <version>${spark.version}</version>
         </dependency>
-        <dependency>
+        <dependency> 
             <groupId>org.spark-project.hive</groupId>
             <artifactId>hive-jdbc</artifactId>
             <version>1.2.1.spark2</version>

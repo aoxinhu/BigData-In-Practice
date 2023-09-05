@@ -18,9 +18,9 @@ object HiveContextApp {
     // HiveContext 继承自 SQLContext，也是 SparkSQL 1.0 版本的入口点
     val peoplePath = args(0) // people.txt 路径
     println("people.txt 路径：" + peoplePath)
+
     val peopleScorePath = args(1) // peopleScore.txt 路径
     println("peopleScore.txt 路径：" + peopleScorePath)
-
 
     // 1. 创建相应的 Context
     val conf = new SparkConf()

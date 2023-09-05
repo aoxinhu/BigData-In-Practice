@@ -28,7 +28,7 @@ public class HBaseUtil {
      */
     public static boolean createTable(String tableName, String[] cfs) {
         try (HBaseAdmin admin = (HBaseAdmin) HBaseConn.getHBaseConn().getAdmin()) {
-            if (admin.tableExists(tableName)) {
+            if (admin.tableExists(TableName.valueOf(tableName))) {
                 return false;
             }
             HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf(tableName));
@@ -52,8 +52,8 @@ public class HBaseUtil {
      */
     public static boolean deleteTable(String tableName) {
         try (HBaseAdmin admin = (HBaseAdmin) HBaseConn.getHBaseConn().getAdmin()) {
-            admin.disableTable(tableName);
-            admin.disableTable(tableName);
+            admin.disableTable(TableName.valueOf(tableName));
+            admin.disableTable(TableName.valueOf(tableName));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -204,7 +204,7 @@ public class HBaseUtil {
      */
     public static boolean deleteColumnFamily(String tableName, String cfName) {
         try (HBaseAdmin admin = (HBaseAdmin) HBaseConn.getHBaseConn().getAdmin()) {
-            admin.deleteColumn(tableName, cfName);
+            admin.deleteColumnFamily(TableName.valueOf(tableName), cfName.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
